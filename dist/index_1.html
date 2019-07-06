@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
+	<title>Doc-upload-demo</title>
+	<link rel='stylesheet' href='../style.css'>
+
+	<style type="text/css">
+		body { 
+			font-family: Arial, sans-serif; 
+		}
+		
+	
+		</style>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.0/jszip.js"></script>
+</head>
+<body>	
+<div class="container">
+	<div id="onfido-mount"></div>
+</div>
+   <script src='../onfido.min.js'></script>
+    <script>
+        Onfido.init({
+  // the JWT token that you generated earlier on
+  token: 'YOUR_JWT_TOKEN',
+  // id of the element you want to mount the component on
+  containerId: 'onfido-mount',
+  onComplete: function(data) {
+    console.log("everything is complete")
+    // `data` will be an object that looks something like this:
+    // ```
+    // {
+    //   "document_front": {
+    //     "id": "5c7b8461-0e31-4161-9b21-34b1d35dde61",
+    //     "type": "passport",
+    //     "side": "front"
+    //   },
+    //   "face": {
+    //     "id": "0af77131-fd71-4221-a7c1-781f22aacd01",
+    //     "variant": "standard"
+    //   }
+    // }
+    // ```
+    //
+    // You can now trigger your backend to start a new check
+    // `data.face.variant` will return the variant used for the face step
+    // this can be used to perform a facial similarity check on the applicant
+  }
+})
+    </script>
+</body>
+</html>
